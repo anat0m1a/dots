@@ -23,6 +23,7 @@ alt - b : yabai -m space --focus recent
 alt + shift - b : yabai -m window --space recent; \
                   yabai -m space --focus recent
 
+alt + shift - r : yabai -m space --rotate 90
 # move focused window to next/prev workspace
 alt + shift - 1 : yabai -m window --space 1
 alt + shift - 2 : yabai -m window --space 2
@@ -34,6 +35,9 @@ alt + shift - 7 : yabai -m window --space 7
 alt + shift - 8 : yabai -m window --space 8
 alt + shift - 9 : yabai -m window --space 9
 alt + shift - 0 : yabai -m window --space 10
+
+# Spawn a new iTerm window
+alt + shift - return : osascript -e 'tell application "iTerm" to (create window with default profile)'
 
 # # mirror tree y-axis
 alt + shift - y : yabai -m space --mirror y-axis
@@ -76,9 +80,6 @@ alt - f : yabai -m window --toggle zoom-fullscreen
 
 # toggle window native fullscreen
 alt + shift - f : yabai -m window --toggle native-fullscreen
-
-# open terminal
-alt - return : open -n /Applications/iTerm.app
 
 # increase window size
 shift + alt - a : yabai -m window --resize left:-20:0
