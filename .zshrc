@@ -2,6 +2,8 @@
 PYTHONPATH=$(brew --prefix)/bin/python3.11
 alias python3=$PYTHONPATH
 
+export FZF_DEFAULT_OPTS=' --color=fg:#ebdbb2,bg:#282828,hl:#b16286 --color=fg+:#689d6a,bg+:#32302f,hl+:#d3869b --color=info:#d65d0e,prompt:#458588,pointer:#fe8019 --color=marker:#8ec07c,spinner:#cc241d,header:#fabd2f'
+
 setopt appendhistory
 bindkey -e
 # End of lines configured by zsh-newuser-install
@@ -11,17 +13,21 @@ fpath+=~/.zfunc
 
 if type brew &>/dev/null; then
     FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH  
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
     autoload -Uz compinit
     compinit
-    export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/games:/usr/games:$HOME/bin:$HOME/bin/fzf-zsh-plugin/bin
+
+    export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/games:/usr/games:$HOME/bin:$HOME/bin/fzf-zsh-plugin/bin:$HOME/.config/emacs/bin:$HOME/.emacs.d/bin
 
     source $(brew --prefix)/share/zsh/site-functions
     source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    # Until I can work out how to make this plugin less shit it stays commented.
+    # source $(brew --prefix)/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+    # zstyle ':completion:*' menu select=2
 else
-    export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/games:/usr/games:$HOME/.local/bin
+    export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/games:/usr/games:$HOME/.local/bin:$HOME/.emacs.d/bin
 fi
 
 autoload -U bashcompinit
