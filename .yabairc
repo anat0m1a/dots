@@ -57,13 +57,40 @@ yabai -m rule --add title='Settings$' manage=off
 
 echo "yabai configuration loaded.."
 
+# Set all padding and gaps to 20pt (default 0)
+# yabai -m config top_padding 0
+# yabai -m config bottom_padding 0
+# yabai -m config left_padding 0
+# yabai -m config right_padding 0
+yabai -m config window_gap 12
+
+
+# Optional bits
+yabai -m config focus_follows_mouse autofocus
+yabai -m config window_shadow float
+yabai -m config window_border_width 5
+yabai -m config active_window_border_color 0xd5c4a1
+
+# For resizing and stuff
+yabai -m config mouse_modifier ctrl
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 resize
+
+# Unmanaged
+yabai -m rule --add app="^(Calculator|System Settings|Archive Utility)$" manage=off
 # Web browsers
 yabai -m rule --add app="^(Safari|Firefox)$" space=1
 # IDE 
-yabai -m rule --add app="^(Code)$" space=4
+yabai -m rule --add app="^(Code|Xcode)$" space=4
 # Terminal
 yabai -m rule --add app="^(iTerm2)$" space=3
 # Music
 yabai -m rule --add app="^(Music|Spotify)$" space=2
+# Calendar
+yabai -m rule --add app="^(Calendar)$" space=10
 # Social
 yabai -m rule --add app="^(Slack|Microsoft Teams|Discord)$" space=5
+yabai -m rule --add app="^(Signal)$" space=16
+#Disassemblers
+yabai -m rule --add app="^(Binary Ninja)$" space=9
+yabai -m rule --add app="^(ida64)$" space=11
