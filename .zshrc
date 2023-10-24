@@ -18,7 +18,7 @@ if type brew &>/dev/null; then
     autoload -Uz compinit
     compinit
 
-    export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/games:/usr/games:$HOME/bin:$HOME/bin/fzf-zsh-plugin/bin:$HOME/.config/emacs/bin:$HOME/.emacs.d/bin
+    export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/games:/usr/games:$HOME/bin:$HOME/bin/fzf-zsh-plugin/bin:$HOME/.config/emacs/bin:$HOME/.emacs.d/bin:$HOME/Git/ipsw-internal/ipsw
 
     source $(brew --prefix)/share/zsh/site-functions
     source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -29,6 +29,8 @@ if type brew &>/dev/null; then
 else
     export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/games:/usr/games:$HOME/.local/bin:$HOME/.emacs.d/bin
 fi
+
+export UHD_IMAGES_DIR="/opt/homebrew/Cellar/uhd/4.4.0.0_1/share/uhd/images"
 
 autoload -U bashcompinit
 bashcompinit
@@ -124,6 +126,9 @@ fi
 # my aliases 
 test -e "${HOME}/.aliases" && source "${HOME}/.aliases"
 
+# my functions
+
+test -e "${HOME}/.functions" && source "${HOME}/.functions"
 # golang
 test -d "${HOME}/go/" && export GOPATH="${HOME}/go/"
 
@@ -182,3 +187,5 @@ run '~/.tmux/plugins/tpm/tpm'
 EOF
 mkdir -p "${HOME}/.tmux"
 fi
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
