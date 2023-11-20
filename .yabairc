@@ -17,35 +17,41 @@
 #!/usr/bin/env sh
 
 # bar settings
-yabai -m config top_padding 0
+yabai -m config top_padding 30
+
+# Dock config
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
 
 # global settings
-yabai -m config mouse_follows_focus          off
-yabai -m config focus_follows_mouse          autofocus
+yabai -m config mouse_follows_focus on
+yabai -m config focus_follows_mouse autofocus
 
-yabai -m config window_placement             second_child
-yabai -m config window_topmost               off
+yabai -m config window_placement second_child
+yabai -m config window_topmost off
 
-yabai -m config window_opacity               off
-yabai -m config window_opacity_duration      0.0
-yabai -m config window_shadow                on
+yabai -m config window_opacity on
+yabai -m config window_opacity_duration 0.0
+yabai -m config window_shadow on
 
-yabai -m config active_window_opacity        1.0
-yabai -m config normal_window_opacity        0.90
-yabai -m config split_ratio                  0.50
-yabai -m config auto_balance                 off
+yabai -m config active_window_opacity 1.0
+yabai -m config normal_window_opacity 0.90
+yabai -m config split_ratio 0.50
+yabai -m config auto_balance on
 
 # Mouse support
-yabai -m config mouse_modifier               alt
-yabai -m config mouse_action1                move
-yabai -m config mouse_action2                resize
+yabai -m config mouse_modifier alt
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 resize
 
 # general space settings
-yabai -m config layout                       bsp
-yabai -m config bottom_padding               0
-yabai -m config left_padding                 0
-yabai -m config right_padding                0
-yabai -m config window_gap                   0
+yabai -m config layout bsp
+yabai -m config bottom_padding 20
+yabai -m config left_padding 20
+yabai -m config right_padding 20
+yabai -m config window_gap 20
+
+yabai -m config external_bar all:40:0
 
 # float system preferences
 yabai -m rule --add app='^System Information$' manage=off
@@ -57,42 +63,30 @@ yabai -m rule --add title='Settings$' manage=off
 
 echo "yabai configuration loaded.."
 
-# Set all padding and gaps to 20pt (default 0)
-# yabai -m config top_padding 0
-# yabai -m config bottom_padding 0
-# yabai -m config left_padding 0
-# yabai -m config right_padding 0
-yabai -m config window_gap 12
-
-
 # Optional bits
 yabai -m config focus_follows_mouse autofocus
 yabai -m config window_shadow float
-yabai -m config window_border_width 5
-yabai -m config active_window_border_color 0xd5c4a1
-
 # For resizing and stuff
 yabai -m config mouse_modifier ctrl
 yabai -m config mouse_action1 move
 yabai -m config mouse_action2 resize
 
 # floating windows are always on top (default: off)
-yabai -m config window_topmost off
+yabai -m config window_topmost on
 
 # Unmanaged
 yabai -m rule --add app="^(Calculator|System Settings|Archive Utility)$" manage=off
 # Web browsers
-yabai -m rule --add app="^(Safari|Firefox)$" space=1
-# IDE 
+yabai -m rule --add app=Arc border=off
+yabai -m rule --add app="^(Arc|Safari|Firefox)$" space=1
+# IDE
 yabai -m rule --add app="^(Code)$" space=4
-# Terminal
-yabai -m rule --add app="^(iTerm2)$" space=3
 # Music
 yabai -m rule --add app="^(Music|Spotify)$" space=2
 # Calendar
 yabai -m rule --add app="^(Calendar)$" space=10
 # Social
-yabai -m rule --add app="^(Slack|Microsoft Teams|Discord)$" space=5
+yabai -m rule --add app="^(Slack)$" space=5
 yabai -m rule --add app="^(Signal)$" space=16
 # Misc
 yabai -m rule --add app="^(Word)$" space=6
